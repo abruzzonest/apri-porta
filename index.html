@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apri Porta - Relay SwitchBot</title>
+  <style>
+    body {
+      background-color: #eef2f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      text-align: center;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 20px 40px;
+      font-size: 24px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button onclick="attivaRelay()">🔓 Apri la Porta</button>
+  </div>
+
+  <script>
+    async function attivaRelay() {
+      try {
+        const response = await fetch("https://hook.eu2.make.com/ungozzgprk4aq2bz8j99dkoe6t7ylgmm", {
+          method: "POST"
+        });
+
+        if (response.ok) {
+          alert("Comando inviato, controlla il relè!");
+        } else {
+          alert("Errore: " + response.statusText);
+        }
+      } catch (error) {
+        alert("Errore di rete: " + error);
+      }
+    }
+  </script>
+</body>
+</html>
